@@ -57,7 +57,7 @@ def fetch_dlob(marketIndex = 5, marketType = 'perp'):
             long_orders['wMidprice'] = (long_orders['price'] * long_orders['baseAssetAmount']).cumsum()
             short_orders['wMidprice'] = (short_orders['price'] * short_orders['baseAssetAmount']).cumsum()
 
-            volume_threshold = 25000
+            volume_threshold = 100
             cumulative_bid_volume = 0
             cumulative_ask_volume = 0
             weighted_bid_sum = 0
