@@ -90,7 +90,6 @@ async def send_orders(midprice, perp: True, market_index, base_asset_amount, spr
 
     ixs = await clearing_house.get_place_perp_orders_ix(orders)
 
-    # await clearing_house.send_ixs(bids_ixs)
     await clearing_house.send_ixs(ixs)
     print('Current bids:')
     print("\n".join(bids_display), "\n")
