@@ -10,7 +10,7 @@ The bot posts a number of symmetrical geometrically increased distance and volum
 
 2. We calculate the midprice based on a weighted DLOB which ponders the volume available, skewing the mid down if the ask side is heavy and viceversa. 
 
-3. We fetch our current position and When we surpass the leverage limit we try to aggressively close our exposure placing orders TOB(Top of Book).
+3. We fetch our current position and when we surpass the leverage limit we try to aggressively close our exposure placing orders TOB(Top of Book).
 
 4. Check if current mid has changed more than a threshold before continuing so that we don't repost too often and don't lose or queue.
 
