@@ -1,15 +1,14 @@
 # Driftoor Bot
-Market Making bot for Drift Labs
 
 Market Making bot built for the Drift Decentralized Exchange. 
 
-The bot posts a number of symmetrical orders around the mid, manages inventory and applies a Kalman Filter normalized error strategy.
+The bot posts a number of symmetrical geometrically increased distance and volume orders around the mid, manages inventory and applies a Kalman Filter normalized error strategy.
 
 ## Strategy Overview
 
 1. Initialize run variables at the beggining of the main function.
 
-2. We calculate the midprice based on a weighted DLOB which ponders the volume available, skewing the mid down if the ask side is heavy and viceversa.
+2. We calculate the midprice based on a weighted DLOB which ponders the volume available, skewing the mid down if the ask side is heavy and viceversa. 
 
 3. We fetch our current position and When we surpass the leverage limit we try to aggressively close our exposure placing orders TOB(Top of Book).
 
@@ -40,4 +39,4 @@ ANCHOR_WALLET=C:/Users/...
 
 ![](./backtest_cash_evolution.png)
 
-Thank you very much team for the opportunity!
+Thank you very much Drift/Circuit team for the opportunity!
