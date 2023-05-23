@@ -25,9 +25,9 @@ def get_ohlcv_scalable(exch, sym, start, end, timeframe='1m'):
     return df_final
 
 
-def compute_strat_skew(sym, max_bp_skew):
+def compute_strat_skew(sym, max_bp_skew=20):
 
-    start = dt.datetime.now().astimezone(pytz.utc).replace(second=0, microsecond=0, tzinfo=None) - dt.timedelta(hours=4)
+    start = dt.datetime.now().astimezone(pytz.utc).replace(second=0, microsecond=0, tzinfo=None) - dt.timedelta(hours=12)
     end = dt.datetime.now().astimezone(pytz.utc).replace(second=0, microsecond=0, tzinfo=None)
     # BASE = 'sol'
     # QUOTE = 'usdt'
@@ -48,14 +48,16 @@ def compute_strat_skew(sym, max_bp_skew):
     state_means, _ = kf.filter(df_public['close'])
     kalman_series = pd.Series(state_means.flatten(), index=df_public.index)
 
+    df_public['midprice'] = (df_public['high'] + df_public['low']) / 2
     bp_cap = max_bp_skew
     error = df_public['close'] - kalman_series
     error_zscore = (error - error.mean()) / error.std()
+    df_public['error_zscore'] = error_zscore
 
     # Calculate adjustment as a ratio based on the error
     adjustment_ratio_series = 1 - error_zscore * (bp_cap / 10000)
     skew = adjustment_ratio_series[-1]
 
-    print(F'Current skew factor: {skew}')
+    print(F'Current Kalman strategy skew factor: {skew}')
 
-    return skew
+    return df_public, skew
