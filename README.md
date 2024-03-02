@@ -39,4 +39,6 @@ ANCHOR_WALLET=C:/Users/...
 
 ![](./backtest_cash_evolution.png)
 
-Thank you very much Drift/Circuit team for the opportunity!
+## Disclaimer
+
+Strategy looks too good to be true, it is because I was using the live data on the testnet which by being very illiquid, my bot started to arbitrage the book to match the real one.
